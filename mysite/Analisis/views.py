@@ -10,3 +10,6 @@ def AnalysisURL(request):
 def RecommendationURL(request):
     return render(request, 'recommendation-url.html')
 
+def analysis_result(request):
+    # Anda bisa menambahkan logika perhitungan skor di sini
+    return render(request, 'analysis-result.html')
