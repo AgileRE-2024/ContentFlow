@@ -1,0 +1,111 @@
+/* Latar belakang halaman */
+body {
+    background: linear-gradient(135deg, #FAEDCD, #F8EDD1);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Kontainer utama */
+#content {
+    background: linear-gradient(135deg, #F8EDD1, #FBD7C7);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+/* Judul dengan gradien warna */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Kotak untuk hasil skor SEO */
+.score-box {
+    border: 1px solid #B4807D;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #Fffce0;
+}
+
+/* Judul skor SEO */
+.score-title {
+    font-weight: 800;
+    font-size: 1.4em;
+    color: #374375;
+    margin-bottom: 10px;
+}
+
+/* Detail skor SEO */
+.score-details {
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+}
+
+/* Section untuk tombol pelacakan performa */
+.track-performance {
+    font-size: 1.2em;
+    font-weight: 600;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-top: 30px;
+}
+
+/* Tombol rekomendasi */
+.recommendation-link {
+    display: inline-block;
+    background-color: #B4807D;
+    color: #FFFCF5;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover efek untuk tombol rekomendasi */
+.recommendation-link:hover {
+    background-color: #8F5A59;
+}
+
+/* Tombol kembali ke halaman sebelumnya */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #825012;
+    color: #FFFCF5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Icon panah di dalam tombol kembali */
+.back-button::before {
+    content: '←';
+    font-size: 1.2em;
+    margin-right: 5px;
+}
