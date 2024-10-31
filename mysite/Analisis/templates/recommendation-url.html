@@ -1,43 +1,42 @@
-<!-- index.html -->
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Flow - Content Analysis</title>
+    <meta name="description" content="ContentFlow helps you optimize your content for better engagement and visibility.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
     <link rel="stylesheet" href="{% static 'css/url.css' %}">
+    <link rel="icon" href="{% static 'images/LOGO.png' %}">
+    <title>ContentFlow</title>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="{% static 'images/LOGO.png' %}" alt="Content Flow Logo">
-                CONTENT FLOW
-            </div>
-            <div class="nav-right">
-                <div class="feature-dropdown">
-                    FEATURE ▼
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Content Analysis</a>
-                        <a href="#" class="dropdown-item">Content Recommendation</a>
+<body style="font-family: 'Montserrat', sans-serif;">
+    <header class="text-gray-700 body-font border-b border-gray-200">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <img class="object-cover object-center rounded h-10 w-10 mr-2" alt="Content optimization illustration" src="{% static 'images/LOGO.png' %}">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'home' %}">
+                <span class="ml-3 text-xl">CONTENT FLOW</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <div class="relative dropdown mr-5">
+                    <button class="hover:text-gray-900 focus:outline-none" onclick="toggleDropdown()">Feature</button>
+                    <div class="absolute dropdown-content shadow-md mt-1">
+                      <a href="{% url 'analysis' %}">Content Analysis</a>
+                      <a href="{% url 'recommendation' %}">Content Recommendations</a>
                     </div>
                 </div>
-                <div class="faq">FAQ</div>
-                <div class="user">👤 USER</div>
-            </div>            
-        </nav>
-        
-    </header>
-
-    <main>
+                <a class="mr-5 hover:text-gray-900" href="">FAQ</a>
+                <a class="mr-5 hover:text-gray-900" href="">Sign In</a>
+            </nav>
+        </div>
+      </header>
         <section class="analysis-section">
-            <h1>Get Content Recommendation Summary</h1>
-            <p>Upload your content and get an in-depth SEO analysis with actionable insights!</p>
+            <h1 id="analysis">Get Content Recommendation Summary</h1>
+            <p id="analysis">Upload your content and get better recommendation!</p>
 
             <div class="url-input-container">
-                <h2>Write the website URL</h2>
+                <h2 id="analysis">Write the website URL</h2>
                 <div class="input-wrapper">
                     <span class="globe-icon">🌐</span>
                     <input type="text" placeholder="Example: https://contentflow.com">
@@ -45,36 +44,48 @@
                 <button class="analyze-btn">Analyze Now</button>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <div class="footer-left">
-            <p>©2024 Group 1</p>
-            <p>Software Development Practicum II</p>
-            <p>Airlangga University</p>
-        </div>
-        <div class="footer-right">
-            <p>Contact us:</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon">
-                    <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{% static 'images/x.png' %}" alt="Twitter">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{% static 'images/Gmail.png' %}" alt="Gmail">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{% static 'images/instagram.png' %}" alt="Instagram">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="{% static 'images/wa.png' %}" alt="WhatsApp">
-                </a>
+        <footer class="text-gray-600 body-font border-t border-gray-200">
+            <div class="container px-5 py-12 mx-auto flex flex-wrap md:flex-row md:flex-nowrap flex-col">
+                <div class="w-64 flex-shrink-0 mx-auto text-center md:text-left">
+                    <a class="flex title-font font-medium items-center justify-center md:justify-start text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7h20L12 2z"></path>
+                            <path d="M2 17l10 5 10-5V7L12 12 2 7v10z"></path>
+                        </svg>
+                        <span class="ml-3 text-xl">ContentFlow</span>
+                    </a>
+                    <p class="mt-2 text-sm text-gray-500">Your partner in content optimization.</p>
+                </div>
+        
+                <div class="flex-grow md:pl-20 md:mt-0 mt-6">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Content Analysis</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">Content Recommendations</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-600 hover:text-gray-800">FAQ</a>
+                        </li>
+                    </nav>
+                </div>
+        
+                <div class="w-full md:w-1/4 flex-shrink-0 md:mt-0 mt-6">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CONTACT</h2>
+                    <p class="text-gray-500 hover:text-gray-900">Email: contentflow@mail.com</p>
+                    <p class="text-gray-500 hover:text-gray-900">Phone: 123-456-7890</p>
+                </div>
             </div>
-        </div>
-    </footer>
-    
-    <script src="{% static 'js/url.js' %}"></script>
+        
+            <div class="bg-gray-200 bg-opacity-75">
+                <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                    <p class="text-gray-500 text-sm text-center sm:text-left">© 2024 ContentFlow — All rights reserved</p>
+                </div>
+            </div>
+        </footer>
+
+    <script src="{% static 'js/landingpage.js' %}"></script>
 </body>
 </html>

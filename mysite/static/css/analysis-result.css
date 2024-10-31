@@ -1,0 +1,188 @@
+/* Additional styles for dropdown */
+.dropdown-content {
+    display: none; /* Hide dropdown by default */
+    background-color: white; /* Set background color to white */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Border around dropdown */
+    border-radius: 0.375rem; /* Rounded corners */
+    z-index: 10; /* Ensure dropdown is above other content */
+}
+.dropdown.active .dropdown-content {
+    display: block; /* Show dropdown when active */
+}
+.dropdown-content a {
+    display: block; /* Make links block level for full width */
+    padding: 0.5rem 1rem; /* Padding for each item */
+    color: #4A5568; /* Text color */
+}
+.dropdown-content a:hover {
+    background-color: rgba(237, 234, 248, 1); /* Change background on hover */
+}
+.dropdown-content a:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Border between items */
+}
+
+.analysis-result {
+    background: #FFF9EB;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pastikan tinggi minimum body mencakup seluruh viewport */
+    color: #333;
+}
+/* Kontainer utama */
+#content {
+    padding: 40px 30px; /* Tambahkan padding atas */
+    border-radius: 12px;
+    max-width: 1000px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    position: relative;
+}
+/* Judul dengan gradien warna */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards ease-in-out;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+/* Kotak untuk hasil skor SEO */
+.score-box {
+    border: 1px solid #B4807D;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #Fffce0;
+}
+/* Judul skor SEO */
+.score-title {
+    font-weight: 800;
+    font-size: 1.4em;
+    color: #374375;
+    margin-bottom: 10px;
+}
+/* Detail skor SEO */
+.score-details {
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+/* Skor Final */
+.final-score {
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+/* Section untuk tombol pelacakan performa */
+.track-performance {
+    font-size: 1.2em;
+    font-weight: 600;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-top: 30px;
+}
+/* Tombol rekomendasi */
+.recommendation-link {
+    display: inline-block;
+    background-color: #B4807D;
+    color: #FFFCF5;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+/* Hover efek untuk tombol rekomendasi */
+.recommendation-link:hover {
+    background-color: #8F5A59;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+/* Tombol kembali ke halaman sebelumnya */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #825012;
+    color: #FFFCF5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+}
+/* Icon panah di dalam tombol kembali */
+.back-button::before {
+    content: '←';
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+.score-indicator {
+width: 100%;
+background-color: #f0e6d6;
+border-radius: 5px;
+margin-top: 15px;
+height: 10px;
+overflow: hidden;
+margin-bottom: 2em;
+}
+.progress-bar {
+height: 100%;
+background-color: #b4807d;
+transition: width 0.5s ease-in-out;
+}
+.tooltip-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #b4807d;
+    border-radius: 50%;
+    margin-left: 8px;
+    cursor: pointer;
+    position: relative;
+}
+.tooltip-icon::after {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 110%;
+    width: 200px;
+    background: #333;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    text-align: left;
+    white-space: normal;
+    z-index: 10;
+}
+.tooltip-icon:hover::after {
+    display: block;
+}

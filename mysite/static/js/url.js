@@ -1,11 +1,19 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Feature dropdown functionality
-    const featureDropdown = document.querySelector('.feature-dropdown');
-    featureDropdown.addEventListener('click', function() {
-        // Add dropdown menu functionality here
-        console.log('Feature dropdown clicked');
-    });
+    function toggleDropdown() {
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.classList.toggle('active'); // Toggle the active class
+    }
+    
+    // Optional: Close the dropdown when clicking outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown button')) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    }
 
     // Analyze button functionality
     const analyzeBtn = document.querySelector('.analyze-btn');

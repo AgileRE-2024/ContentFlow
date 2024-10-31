@@ -1,56 +1,13 @@
-/* url.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
     background-color: #fdf6f0;
 }
 
-/* Header Styles */
-.logo img {
-    width: 40px; /* Adjust width as needed */
-    height: auto; /* Maintains aspect ratio */
-    vertical-align: middle; /* Aligns the image with the text */
-    margin-right: 0.5rem; /* Adds some space between the image and the text */
-}
-
 header {
-    padding: 1rem 2rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: white;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.2rem;
-    color: #d4918e;
-}
-
-.logo span {
-    font-weight: bold;
-    border: 2px solid #d4918e;
-    padding: 0.2rem 0.4rem;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-}
-
-.nav-right {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.feature-dropdown, .faq, .user {
-    cursor: pointer;
+footer {
+    background-color: white;
 }
 
 /* Main Content Styles */
@@ -61,13 +18,13 @@ nav {
     text-align: center;
 }
 
-h1 {
+h1#analysis {
     color: #d4918e;
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
-p {
+p#analysis {
     color: #555;
     margin-bottom: 2rem;
 }
@@ -79,7 +36,7 @@ p {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-h2 {
+h2#analysis {
     color: #333;
     margin-bottom: 1.5rem;
 }
@@ -122,75 +79,26 @@ input {
 .analyze-btn:hover {
     background-color: #d4918e;
 }
-/* Style for the feature dropdown */
-.feature-dropdown {
-    position: relative;
-    cursor: pointer;
-}
 
-/* Style for the dropdown menu */
-.dropdown-menu {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 100%; /* Position it below the button */
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    min-width: 200px;
-    z-index: 10;
+/* Additional styles for dropdown */
+.dropdown-content {
+    display: none; /* Hide dropdown by default */
+    background-color: white; /* Set background color to white */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Border around dropdown */
+    border-radius: 0.375rem; /* Rounded corners */
+    z-index: 10; /* Ensure dropdown is above other content */
 }
-
-/* Style for each dropdown item */
-.dropdown-item {
-    padding: 1rem;
-    color: #333;
-    text-decoration: none;
-    display: block;
+.dropdown.active .dropdown-content {
+    display: block; /* Show dropdown when active */
 }
-
-.dropdown-item:hover {
-    background-color: #f0f0f0;
+.dropdown-content a {
+    display: block; /* Make links block level for full width */
+    padding: 0.5rem 1rem; /* Padding for each item */
+    color: #4A5568; /* Text color */
 }
-
-/* Show the dropdown menu on hover */
-.feature-dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-content a:hover {
+    background-color: rgba(237, 234, 248, 1); /* Change background on hover */
 }
-
-/* Footer Styles */
-footer {
-    background-color: #fff;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-}
-
-.footer-left p {
-    margin: 0.2rem 0;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.social-icons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.social-icon img {
-    width: 20px;
-    height: 20px;
-    opacity: 0.6;
-    transition: opacity 0.3s;
-}
-
-.social-icon:hover img {
-    opacity: 1;
+.dropdown-content a:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Border between items */
 }
