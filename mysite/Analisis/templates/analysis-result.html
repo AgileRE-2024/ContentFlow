@@ -11,6 +11,7 @@
         <link rel="icon" href="{% static 'images/LOGO.png' %}">
         <title>ContentFlow</title>
     </head>
+    
     <body style="font-family: 'Montserrat', sans-serif;">
         <header class="text-gray-700 body-font border-b border-gray-200">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -31,6 +32,7 @@
                 </nav>
             </div>
           </header>
+          <!--
 <section class="analysis-result">
     <div id="content">
         <h1>Content Analysis Results</h1>
@@ -105,6 +107,43 @@
         </div>
         <div class="track-performance">
             <p>Want to track your content performance? <a href="#">Track Now</a></p>
+        </div>
+    </div>
+</section>
+-->
+<section class="analysis-result">
+    <div id="content">
+        <h1>Hasil Analisis</h1>
+        <div class="score-box">
+            <p class="score-details"><strong>URL:</strong> {{ result.url }}</p>
+            <p class="score-details"><strong>Judul:</strong> {{ result.title }}</p>
+            
+            <p class="score-title">Skor SEO per Kriteria</p>
+            <table class="score-details">
+                <thead>
+                    <tr>
+                        <th>Kriteria</th>
+                        <th>Skor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for criteria, score in result.criteria_scores.items %}
+                    <tr>
+                        <td>{{ criteria }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}</p>
+            
+            <p class="final-score"><strong>Kata Kunci Teratas</strong></p>
+            <ul class="final-score">
+                {% for keyword in result.keywords %}
+                    <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </section>

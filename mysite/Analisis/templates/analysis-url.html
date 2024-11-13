@@ -31,19 +31,25 @@
             </nav>
         </div>
       </header>
-        <section class="analysis-section">
-            <h1 id="analysis">Get Content Analysis Summary</h1>
-            <p id="analysis">Upload your content and get an in-depth SEO analysis with actionable insights!</p>
-
+      <section class="analysis-section">
+        <h1 id="analysis">Get Content Analysis Summary</h1>
+        <p id="analysis">Upload your content and get an in-depth SEO analysis with actionable insights!</p>
+    
+        <form method="POST" action="{% url 'analysis-result' %}">
+            {% csrf_token %}
             <div class="url-input-container">
                 <h2 id="analysis">Write the website URL</h2>
                 <div class="input-wrapper">
                     <span class="globe-icon">🌐</span>
-                    <input type="text" placeholder="Example: https://contentflow.com">
+                    <input type="url" name="url" placeholder="Example: https://contentflow.com" required>
                 </div>
-                <a href="{% url 'analysis-result' %}" class="analyze-btn">Analyze Now</a>
+                <button type="submit" class="analyze-btn">Analyze Now</button>
             </div>
-        </section>
+        </form>
+        {% if error %}
+            <p style="color: red;">Error: {{ error }}</p>
+        {% endif %}
+    </section>
         <footer class="text-gray-600 body-font border-t border-gray-200">
             <div class="container px-5 py-12 mx-auto flex flex-wrap md:flex-row md:flex-nowrap flex-col">
                 <div class="w-64 flex-shrink-0 mx-auto text-center md:text-left">
