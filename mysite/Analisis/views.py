@@ -160,3 +160,6 @@ def AnalysisResult(request):
             return render(request, 'analysis-url.html', {'error': str(e)})
 
     return render(request, 'analysis-url.html')
+
+def FAQ(request):
+    return render(request, 'faq.html')
