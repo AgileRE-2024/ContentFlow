@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="CodeHim" />
+    <title>FAQ PAGE</title>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+   
+    <main class="cd__main">
+      
+      <main>
+        <section class="card">
+          <!-- cube img -->
+          <img
+            src="{% static 'images/illustration-box-desktop.svg' %}"
+            alt="Box"
+            class="card__box"
+          />
+          <!-- Images -->
+          <div class="card__img">
+            <!-- mobile -->
+            <img
+              class="card__img-mobile"
+              src="{% static 'images/illustration-woman-online-mobile.svg' %}"
+              alt="Woman online Mobile"
+            />
+            <!-- desktop -->
+            <img
+              class="card__img-desktop"
+              src="{% static 'images/illustration-woman-online-desktop.svg' %}"
+              alt="Woman online desktop"
+            />
+          </div>
+
+          <!-- Text -->
+          <div class="card__text">
+            <h1>FAQ</h1>
+
+            <div class="accordion">
+              <!-- item 1 -->
+              <div class="accordion__item">
+                <button class="accordion__title">
+                  Pertanyaan....... 1
+                </button>
+
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__text">
+                    <p>
+                      You can invite up to 2 additional users on the Free plan.
+                      There is no limit on team members for the Premium plan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="accordion__item">
+                <button class="accordion__title">
+                  Pertanyaan...... 2
+                </button>
+
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__text">
+                    No more than 2GB. All files in your account must fit your
+                    allotted storage space.
+                  </div>
+                </div>
+              </div>
+              <!-- item 3 -->
+              <div class="accordion__item">
+                <button class="accordion__title">
+                  Pertanyaan...... 3
+                </button>
+
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__text">
+                    Click “Forgot password” from the login page or “Change
+                    password” from your profile page. A reset link will be
+                    emailed to you.
+                  </div>
+                </div>
+              </div>
+              <!-- item 4 -->
+              <div class="accordion__item">
+                <button class="accordion__title">
+                  Pertanyaan........ 4
+                </button>
+
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__text">
+                    Yes! Send us a message and we’ll process your request no
+                    questions asked.
+                  </div>
+                </div>
+              </div>
+              <!-- item 5 -->
+              <div class="accordion__item">
+                <button class="accordion__title">
+                  Pertanyaan........ 5
+                </button>
+
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__text">
+                    Chat and email support is available 24/7. Phone lines are
+                    open during normal business hours.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+    
+
+    <!-- Script JS -->
+    <script src="{% static 'js/faq.js' %}"></script>
+   
+  </body>
+</html>

@@ -184,5 +184,7 @@ def AnalysisResult(request):
 
         except requests.exceptions.RequestException as e:
             return render(request, 'analysis-url.html', {'error': f'Gagal mengambil data: {e}'})
+    return render(request, 'analysis-url.html')
 
-    return render(request, 'analysis-url.html', {'error': 'Hanya metode POST yang diperbolehkan.'})
+def FAQ(request):
+    return render(request, 'faq.html')
