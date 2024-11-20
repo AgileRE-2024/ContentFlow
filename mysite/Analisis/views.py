@@ -108,12 +108,26 @@ def AnalysisResult(request):
 
             # Skor 3: Panjang heading
             criteria_scores['Heading Length'] = 0
-            for h in headings:
-                h_length = len(h.get_text())
-                if 20 <= h_length <= 70:
-                    criteria_scores['Heading Length'] += 10
-                elif 15 <= h_length < 20:
-                    criteria_scores['Heading Length'] += 5
+
+            if headings:  # Periksa apakah ada heading
+                optimal_count = 0
+                total_headings = len(headings)
+    
+                for h in headings:
+                    h_length = len(h.get_text().strip())
+                    if 20 <= h_length <= 70:
+                        optimal_count += 1
+    
+                # Penilaian berdasarkan jumlah heading yang optimal
+                if optimal_count == total_headings:  # Semua heading optimal
+                    criteria_scores['Heading Length'] = 10
+                elif optimal_count > 0:  # Beberapa heading optimal
+                    criteria_scores['Heading Length'] = 5
+                else:  # Tidak ada heading optimal
+                    criteria_scores['Heading Length'] = 0
+            else:
+                criteria_scores['Heading Length'] = 0  # Tidak ada heading sama sekali
+
 
             # Skor 4: Keyword di judul
             keyword_in_title_count = sum(title.lower().count(keyword.lower()) for keyword, _ in keywords)
@@ -125,14 +139,11 @@ def AnalysisResult(request):
                 criteria_scores['Keyword in Title'] = 0
 
             # Skor 5: Keyword di paragraf pertama
-            if first_paragraph:
-                keyword_in_first_paragraph_count = sum(first_paragraph.lower().count(keyword.lower()) for keyword, _ in keywords)
-                if keyword_in_first_paragraph_count in [1, 2]:
-                    criteria_scores['Keyword in First Paragraph'] = 10
-                elif keyword_in_first_paragraph_count == 3:
-                    criteria_scores['Keyword in First Paragraph'] = 5
-                else:
-                    criteria_scores['Keyword in First Paragraph'] = 0
+            keyword_in_first_paragraph_count = sum(first_paragraph.lower().count(keyword.lower()) for keyword, _ in keywords)
+            if keyword_in_first_paragraph_count in [1, 2]:
+                criteria_scores['Keyword in First Paragraph'] = 10
+            elif keyword_in_first_paragraph_count == 3:
+                criteria_scores['Keyword in First Paragraph'] = 5
             else:
                 criteria_scores['Keyword in First Paragraph'] = 0
 
