@@ -142,6 +142,20 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            <p class="score-details"><strong>Rekomendasi</strong></p>
+            <table class="score-details">
+                <tr>
+                    <th>Kriteria</th>
+                    <th>Rekomendasi</th>
+                </tr>
+                {% for criteria, recommendation in result.recommendations.items %}
+                    <tr>
+                        <td>{{ criteria }}</td>
+                        <td>{{ recommendation }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
             
             <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}</p>
             

@@ -180,6 +180,56 @@ def AnalysisResult(request):
 
             # Total skor
             total_score = sum(criteria_scores.values())
+            
+            # Rekomendasi perbaikan
+            recommendations = {
+                'Title Length': {
+                    0: "Perpanjang judul artikel Anda agar berada dalam rentang 50-60 karakter untuk hasil SEO yang lebih baik.",
+                    5: "Judul artikel bisa sedikit lebih panjang atau lebih pendek agar sesuai dengan panjang optimal 50-60 karakter."
+                },
+                'Heading Count': {
+                    0: "Tambahkan lebih banyak heading (H1, H2, H3) untuk membantu pembaca dan mesin pencari memahami struktur konten.",
+                    5: "Pertimbangkan untuk menambah satu heading lagi agar jumlah heading lebih optimal."
+                },
+                'Heading Length': {
+                    0: "Pastikan panjang heading Anda berada dalam rentang 20-70 karakter untuk hasil SEO yang lebih baik.",
+                    5: "Coba perbaiki heading yang terlalu panjang atau terlalu pendek agar sesuai dengan rentang panjang yang optimal."
+                },
+                'Keyword in Title': {
+                    0: "Pastikan kata kunci utama muncul di judul artikel untuk meningkatkan relevansi SEO.",
+                    5: "Coba masukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
+                },
+                'Keyword in First Paragraph': {
+                    0: "Tempatkan kata kunci utama di paragraf pertama untuk membantu mesin pencari memahami topik utama.",
+                    5: "Cobalah untuk menyebutkan kata kunci utama lebih dari sekali di paragraf pertama."
+                },
+                'Content Length': {
+                    0: "Tambahkan lebih banyak konten (300-1500 kata) untuk meningkatkan SEO artikel Anda.",
+                    5: "Perpanjang artikel sedikit lagi agar lebih mendekati panjang optimal."
+                },
+                'Alt Tag on Images': {
+                    0: "Tambahkan tag 'alt' pada gambar di artikel Anda untuk meningkatkan SEO.",
+                    5: "Pastikan semua gambar memiliki tag 'alt' yang relevan dengan konten gambar."
+                },
+                'Meta Tag': {
+                    0: "Perbaiki atau tambahkan meta tag yang sesuai dengan konten artikel untuk meningkatkan SEO.",
+                    5: "Pastikan meta description Anda mencakup kata kunci utama."
+                },
+                'Internal Links': {
+                    0: "Tambahkan tautan internal ke artikel lain di situs Anda untuk membantu SEO.",
+                    5: "Tambahkan lebih banyak tautan internal agar lebih membantu pembaca dan mesin pencari."
+                },
+                'External Links': {
+                    0: "Tambahkan tautan eksternal yang relevan dengan artikel Anda untuk meningkatkan otoritas SEO.",
+                    5: "Cobalah menambahkan lebih banyak tautan eksternal ke sumber yang relevan."
+                }
+            }
+
+            # Menambahkan rekomendasi pada result_data
+            recommendation_data = {
+                key: recommendations[key].get(score, "-") 
+                for key, score in criteria_scores.items()
+            }
 
             # Data untuk template
             result_data = {
@@ -188,6 +238,7 @@ def AnalysisResult(request):
                 'content': content,
                 'total_score': total_score,
                 'criteria_scores': criteria_scores,
+                'recommendations': recommendation_data,
                 'keywords': [keyword for keyword, _ in keywords]
             }
 
