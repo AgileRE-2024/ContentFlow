@@ -117,8 +117,15 @@
         <div class="score-box">
             <p class="score-details"><strong>URL:</strong> {{ result.url }}</p>
             <p class="score-details"><strong>Judul:</strong> {{ result.title }}</p>
-            
-            <p class="score-title">Skor SEO per Kriteria</p>
+
+            <p class="final-score"><strong>Kata Kunci Teratas</strong></p>
+            <ul class="final-score">
+                {% for keyword in result.keywords %}
+                    <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>            
+
+            <p class="score-details"><strong>Skor SEO per Kriteria</strong></p>
             <table class="score-details">
                 <thead>
                     <tr>
@@ -138,12 +145,6 @@
             
             <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}</p>
             
-            <p class="final-score"><strong>Kata Kunci Teratas</strong></p>
-            <ul class="final-score">
-                {% for keyword in result.keywords %}
-                    <li>{{ keyword }}</li>
-                {% endfor %}
-            </ul>
         </div>
     </div>
 </section>
