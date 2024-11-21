@@ -18,15 +18,9 @@
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'home' %}">
                 <span class="ml-3 text-xl">CONTENT FLOW</span>
             </a>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <div class="relative dropdown mr-5">
-                    <button class="hover:text-gray-900 focus:outline-none" onclick="toggleDropdown()">Feature</button>
-                    <div class="absolute dropdown-content shadow-md mt-1">
-                      <a href="{% url 'analysis' %}">Content Analysis</a>
-                      <a href="{% url 'recommendation' %}">Content Recommendations</a>
-                    </div>
-                </div>
-                <a class="mr-5 hover:text-gray-900" href="">FAQ</a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center" >
+                <a href="{% url 'analysis' %}" class="mr-5 hover:text-gray-900" >Analysis</a>
+                <a href="{% url 'faq' %}" class="mr-5 hover:text-gray-900">FAQ</a>
                 <a class="mr-5 hover:text-gray-900" href="">Sign In</a>
             </nav>
         </div>
