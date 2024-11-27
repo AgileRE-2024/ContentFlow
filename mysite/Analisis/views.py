@@ -183,45 +183,46 @@ def AnalysisResult(request):
             
             # Rekomendasi perbaikan
             recommendations = {
+
                 'Title Length': {
-                    0: "Perpanjang judul artikel Anda agar berada dalam rentang 50-60 karakter untuk hasil SEO yang lebih baik.",
-                    5: "Judul artikel bisa sedikit lebih panjang atau lebih pendek agar sesuai dengan panjang optimal 50-60 karakter."
+                    0: "Judul artikel Anda terlalu pendek. Perpanjang hingga mencapai panjang optimal antara 50-60 karakter untuk meningkatkan efektivitas SEO dan menarik perhatian pembaca.",
+                    5: "Judul artikel Anda sudah cukup baik, namun jika memungkinkan, coba sesuaikan panjangnya agar berada di rentang optimal 50-60 karakter."
                 },
                 'Heading Count': {
-                    0: "Tambahkan lebih banyak heading (H1, H2, H3) untuk membantu pembaca dan mesin pencari memahami struktur konten.",
-                    5: "Pertimbangkan untuk menambah satu heading lagi agar jumlah heading lebih optimal."
+                    0: "Artikel Anda membutuhkan lebih banyak heading (H1, H2, H3) untuk memberikan struktur yang jelas. Ini akan memudahkan pembaca memahami isi artikel dan meningkatkan nilai SEO.",
+                    5: "Heading yang digunakan sudah cukup, tetapi menambah satu atau dua heading lagi dapat membuat struktur konten lebih informatif dan optimal."
                 },
                 'Heading Length': {
-                    0: "Pastikan panjang heading Anda berada dalam rentang 20-70 karakter untuk hasil SEO yang lebih baik.",
-                    5: "Coba perbaiki heading yang terlalu panjang atau terlalu pendek agar sesuai dengan rentang panjang yang optimal."
+                    0: "Beberapa heading terlalu pendek atau terlalu panjang. Cobalah untuk menyesuaikan panjang heading agar berada di rentang optimal 20-70 karakter sehingga lebih relevan bagi pembaca dan mesin pencari.",
+                    5: "Heading dalam artikel Anda sudah baik, tetapi ada yang dapat sedikit diperbaiki agar panjangnya lebih sesuai dengan rentang optimal 20-70 karakter."
                 },
                 'Keyword in Title': {
-                    0: "Pastikan kata kunci utama muncul di judul artikel untuk meningkatkan relevansi SEO.",
-                    5: "Coba masukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
+                    0: "Kata kunci utama belum muncul di judul artikel. Pastikan untuk menyisipkan kata kunci utama agar relevansi artikel dengan pencarian lebih tinggi.",
+                    5: "Kata kunci utama sudah ada di judul, tetapi pertimbangkan untuk memperkuat posisinya atau menggunakannya secara lebih menonjol."
                 },
                 'Keyword in First Paragraph': {
-                    0: "Tempatkan kata kunci utama di paragraf pertama untuk membantu mesin pencari memahami topik utama.",
-                    5: "Cobalah untuk menyebutkan kata kunci utama lebih dari sekali di paragraf pertama."
+                    0: "Kata kunci utama belum disebutkan di paragraf pertama. Tambahkan kata kunci utama di bagian awal untuk membantu mesin pencari mengenali topik artikel Anda.",
+                    5: "Paragraf pertama sudah mengandung kata kunci utama, namun Anda bisa menyebutkannya sekali lagi untuk meningkatkan relevansi SEO."
                 },
                 'Content Length': {
-                    0: "Tambahkan lebih banyak konten (300-1500 kata) untuk meningkatkan SEO artikel Anda.",
-                    5: "Perpanjang artikel sedikit lagi agar lebih mendekati panjang optimal."
+                    0: "Panjang artikel masih kurang dari rekomendasi SEO. Tambahkan lebih banyak konten hingga mencapai panjang ideal (300-1500 kata) untuk memberikan nilai lebih bagi pembaca dan mesin pencari.",
+                    5: "Artikel Anda hampir mencapai panjang optimal, tetapi menambahkan beberapa paragraf tambahan dapat memberikan dampak yang lebih signifikan untuk SEO."
                 },
                 'Alt Tag on Images': {
-                    0: "Tambahkan tag 'alt' pada gambar di artikel Anda untuk meningkatkan SEO.",
-                    5: "Pastikan semua gambar memiliki tag 'alt' yang relevan dengan konten gambar."
+                    0: "Gambar di artikel belum memiliki tag 'alt'. Pastikan untuk menambahkan tag 'alt' yang relevan pada setiap gambar agar meningkatkan aksesibilitas dan SEO.",
+                    5: "Sebagian besar gambar sudah memiliki tag 'alt', tetapi pastikan semua gambar lainnya juga dilengkapi dengan deskripsi yang relevan."
                 },
                 'Meta Tag': {
-                    0: "Perbaiki atau tambahkan meta tag yang sesuai dengan konten artikel untuk meningkatkan SEO.",
-                    5: "Pastikan meta description Anda mencakup kata kunci utama."
+                    0: "Meta description pada artikel Anda belum dioptimalkan. Perbaiki atau tambahkan meta description yang mencakup kata kunci utama untuk meningkatkan relevansi artikel di search engine.",
+                    5: "Meta description sudah mencakup kata kunci utama, namun pastikan deskripsinya menarik dan sesuai dengan isi artikel untuk hasil yang lebih baik."
                 },
                 'Internal Links': {
-                    0: "Tambahkan tautan internal ke artikel lain di situs Anda untuk membantu SEO.",
-                    5: "Tambahkan lebih banyak tautan internal agar lebih membantu pembaca dan mesin pencari."
+                    0: "Artikel Anda belum menyertakan tautan internal ke konten lain di situs. Tambahkan tautan internal untuk memudahkan navigasi pembaca dan meningkatkan SEO.",
+                    5: "Internal links sudah ada, tetapi menambah tautan ke artikel lain yang relevan dapat meningkatkan nilai konten Anda di mata pembaca dan search engine."
                 },
                 'External Links': {
-                    0: "Tambahkan tautan eksternal yang relevan dengan artikel Anda untuk meningkatkan otoritas SEO.",
-                    5: "Cobalah menambahkan lebih banyak tautan eksternal ke sumber yang relevan."
+                    0: "Artikel Anda belum menyertakan tautan ke sumber eksternal. Tambahkan tautan ke sumber yang relevan untuk meningkatkan kredibilitas konten.",
+                    5: "Tautan eksternal sudah digunakan, tetapi menambahkan tautan ke sumber berkualitas tinggi dapat memperkuat otoritas artikel Anda."
                 }
             }
 
