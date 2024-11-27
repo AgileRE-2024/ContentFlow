@@ -45,13 +45,12 @@ def AnalysisResult(request):
             content = body_content.get_text(separator='\n', strip=True) if body_content else 'No body content found.'
 
             # Ambil semua heading
-            headings = soup.find_all(['h1', 'h2', 'h3'])
+            headings = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
             heading_count = len(headings)
 
             # Ambil meta description
             meta_description = soup.find('meta', attrs={'name': 'description'})
             meta_content = meta_description['content'] if meta_description else ''
-            meta_length = len(meta_content)
 
             # Ambil gambar dan alt text
             images = soup.find_all('img')
@@ -107,17 +106,19 @@ def AnalysisResult(request):
                 criteria_scores['Heading Count'] = 0
 
             # Skor 3: Panjang heading
-            criteria_scores['Heading Length'] = 0
-
             if headings:  # Periksa apakah ada heading
                 optimal_count = 0
                 total_headings = len(headings)
-    
-                for h in headings:
-                    h_length = len(h.get_text().strip())
+                non_optimal_headings = []  # Simpan heading yang kurang optimal
+
+                for i, h in enumerate(headings, start=1):  # Enumerate untuk memberi nomor pada heading
+                    h_text = h.get_text().strip()
+                    h_length = len(h_text)
                     if 20 <= h_length <= 70:
                         optimal_count += 1
-    
+                    else:
+                        non_optimal_headings.append({'index': i, 'text': h_text, 'length': h_length})  # Simpan heading tidak optimal
+
                 # Penilaian berdasarkan jumlah heading yang optimal
                 if optimal_count == total_headings:  # Semua heading optimal
                     criteria_scores['Heading Length'] = 10
@@ -127,7 +128,7 @@ def AnalysisResult(request):
                     criteria_scores['Heading Length'] = 0
             else:
                 criteria_scores['Heading Length'] = 0  # Tidak ada heading sama sekali
-
+                non_optimal_headings = None  # Tidak ada heading
 
             # Skor 4: Keyword di judul
             keyword_in_title_count = sum(title.lower().count(keyword.lower()) for keyword, _ in keywords)
@@ -159,17 +160,17 @@ def AnalysisResult(request):
                 criteria_scores['Alt Tag on Images'] = 0
             elif alt_count == len(images):
                 criteria_scores['Alt Tag on Images'] = 10
-            elif alt_count > 0:
+            elif alt_count > 0 > len(images):
                 criteria_scores['Alt Tag on Images'] = 5
             else:
                 criteria_scores['Alt Tag on Images'] = 0
 
             # Skor 8: Meta tag
-            if 0 <= meta_length <= 160 and keyword in meta_content:
+            if meta_content and keyword in meta_content:  # Meta tag ada dan mengandung keyword
                 criteria_scores['Meta Tag'] = 10
-            elif 0 <= meta_length <= 160:
+            elif meta_content:  # Meta tag ada tetapi tidak mengandung keyword
                 criteria_scores['Meta Tag'] = 5
-            else:
+            else:  # Tidak ada meta tag
                 criteria_scores['Meta Tag'] = 0
 
             # Skor 9: Internal link
@@ -180,9 +181,114 @@ def AnalysisResult(request):
 
             # Total skor
             total_score = sum(criteria_scores.values())
+
+            # Penentuan tingkat keoptimalan berdasarkan total skor
+            if total_score >= 80:
+                optimization_level = "Optimal"
+            elif 60 <= total_score < 80:
+                optimization_level = "Cukup Optimal"
+            elif 40 <= total_score < 60:
+                optimization_level = "Kurang Optimal"
+            else:
+                optimization_level = "Tidak Optimal"
             
             # Rekomendasi perbaikan
-            recommendations = {
+            recommendations = {}
+            
+            # Rekomendasi 1: Title Length
+            if title_length < 50:
+                recommendations['Title Length'] = "Judul terlalu pendek, tambahkan detail penting untuk menarik pembaca."
+            elif title_length > 60:
+                recommendations['Title Length'] = "Judul terlalu panjang, ringkas menjadi 50-60 karakter tanpa menghilangka makna."
+            else:
+                recommendations['Title Length'] = "✓"
+
+            # Rekomendasi 2: Heading Count
+            if heading_count < 2:
+                recommendations['Heading Count'] = "Tambahkan heading lagi setidaknya hingga berjumlah 2 atau 3 heading untuk mempermudah pembaca memahami struktur artikel."
+            elif heading_count > 3:
+                recommendations['Heading Count'] = "Jumlah heading terlalu banyak, coba sederhanakan struktur artikel setidaknya hingga heading berjumlah 2 atau 3."
+            elif heading_count == 0:
+                recommendations['Heading Count'] = "Tidak ada heading ditemukan, tambahkan heading untuk membantu dalam memberikan informasi kepada pembaca."
+            else:
+                recommendations['Heading Count'] = "✓"
+
+            # Rekomendasi 3: Heading Length
+            if headings:  # Periksa apakah ada heading
+                recommendations['Heading Length'] = []  # Siapkan tempat untuk rekomendasi
+                for i, h in enumerate(headings, start=1):  # Enumerate untuk memberi nomor pada heading
+                    h_text = h.get_text().strip()
+                    h_length = len(h_text)
+                    if h_length < 20:
+                        recommendations['Heading Length'].append(
+                            f"Heading {i} ('{h_text}') terlalu pendek ({h_length} karakter). Pertimbangkan untuk menambahkan lebih banyak kata agar lebih informatif."
+                        )
+                    elif h_length > 70:
+                        recommendations['Heading Length'].append(
+                            f"Heading {i} ('{h_text}') terlalu panjang ({h_length} karakter). Pertimbangkan untuk mempersingkat agar lebih ringkas."
+                        )
+
+                # Jika semua heading optimal
+                if not recommendations['Heading Length']:
+                    recommendations['Heading Length'].append("✓")
+            else:
+                recommendations['Heading Length'] = ["Tidak ada heading ditemukan, tambahkan heading untuk membantu dalam memberikan informasi kepada pembaca."]  # Rekomendasi jika tidak ada heading
+
+            # Rekomendasi 4: Keyword in Title
+            if keyword_in_title_count > 1:
+                recommendations['Keyword in Title'] = "Coba untuk tidak memasukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
+            elif keyword_in_title_count < 1:
+                recommendations['Keyword in Title'] = "Pastikan kata kunci utama muncul di judul artikel untuk meningkatkan relevansi SEO."
+            else:
+                recommendations['Keyword in Title'] = "✓"
+                
+            # Rekomendasi 5: Keyword in First Paragraph
+            if keyword_in_first_paragraph_count > 2:
+                recommendations['Keyword in First Paragraph'] = "Cobalah untuk tidak menyebutkan kata kunci utama lebih dari dua kali di paragraf pertama."
+            elif keyword_in_first_paragraph_count < 1:
+                recommendations['Keyword in First Paragraph'] = "Tempatkan kata kunci utama di paragraf pertama untuk membantu mesin pencari memahami topik utama."
+            else:
+                recommendations['Keyword in First Paragraph'] = "✓"
+                
+            # Rekomendasi 6: Content Length
+            if word_count > 300:
+                recommendations['Content Length'] = "Jumlah kata dalam konten terlalu sedikit karena kurang dari 300 kata. Tambahkan lebih banyak kata dalam konten untuk meningkatkan SEO artikel Anda."
+            elif word_count < 1500:
+                recommendations['Content Length'] = "Jumlah kata dalam konten terlalu banyak karena lebih dari 1500 kata. Pertimbangkan untuk mempersingkat agar lebih ringkas."
+            else:
+                recommendations['Content Length'] = "✓"
+                
+            # Rekomendasi 7: Alt Tag on Images
+            if len(images) == 0:  
+                recommendations['Alt Tag on Images'] = "Tidak ada gambar ditemukan di halaman ini. Pertimbangkan untuk menambahkan gambar yang relevan dengan alt tag untuk meningkatkan aksesibilitas dan SEO."
+            elif alt_count == len(images):  
+                recommendations['Alt Tag on Images'] = "✓"
+            elif alt_count > 0:  
+                recommendations['Alt Tag on Images'] = "Beberapa gambar tidak memiliki alt tag. Pastikan semua gambar memiliki alt tag untuk meningkatkan aksesibilitas dan SEO."
+            else:  
+                recommendations['Alt Tag on Images'] = "Tidak ada gambar yang memiliki alt tag. Tambahkan alt tag pada semua gambar untuk meningkatkan aksesibilitas dan SEO."
+                
+            # Rekomendasi 8: Meta Tag
+            if meta_content and keyword in meta_content:  # Meta tag ada dan mengandung keyword
+                recommendations['Meta Tag'] = "✓"
+            elif meta_content:  # Meta tag ada tetapi tidak mengandung keyword
+                recommendations['Meta Tag'] = "Meta description sudah ada, namun tidak mengandung keyword yang relevan. Pertimbangkan untuk menambahkan keyword agar lebih SEO-friendly."
+            else:  # Tidak ada meta tag
+                recommendations['Meta Tag'] = "Tidak ditemukan meta description. Tambahkan meta description yang mengandung keyword untuk meningkatkan visibilitas di mesin pencari."
+                
+            # Rekomendasi 9: Internal link
+            if internal_links:
+                recommendations['Internal Links'] = "✓"
+            else:
+                recommendations['Internal Links'] = "Tidak ditemukan internal link. Sebaiknya menambahkan internal links untuk membantu meningkatkan navigasi situs dan SEO."
+
+            # Rekomendasi 10: External link
+            if external_links:
+                recommendations['External Links'] = "✓"
+            else:
+                recommendations['External Links'] = "Tidak ditemukan external link. Pertimbangkan untuk menambahkan link ke sumber eksternal yang relevan dan dapat dipercaya untuk meningkatkan otoritas halaman Anda."
+                
+            """recommendations = {
                 'Title Length': {
                     0: "Perpanjang judul artikel Anda agar berada dalam rentang 50-60 karakter untuk hasil SEO yang lebih baik.",
                     5: "Judul artikel bisa sedikit lebih panjang atau lebih pendek agar sesuai dengan panjang optimal 50-60 karakter."
@@ -197,11 +303,11 @@ def AnalysisResult(request):
                 },
                 'Keyword in Title': {
                     0: "Pastikan kata kunci utama muncul di judul artikel untuk meningkatkan relevansi SEO.",
-                    5: "Coba masukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
+                    5: "Coba untuk tidak memasukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
                 },
                 'Keyword in First Paragraph': {
                     0: "Tempatkan kata kunci utama di paragraf pertama untuk membantu mesin pencari memahami topik utama.",
-                    5: "Cobalah untuk menyebutkan kata kunci utama lebih dari sekali di paragraf pertama."
+                    5: "Cobalah untuk tidak menyebutkan kata kunci utama lebih dari dua kali di paragraf pertama."
                 },
                 'Content Length': {
                     0: "Tambahkan lebih banyak konten (300-1500 kata) untuk meningkatkan SEO artikel Anda.",
@@ -212,18 +318,16 @@ def AnalysisResult(request):
                     5: "Pastikan semua gambar memiliki tag 'alt' yang relevan dengan konten gambar."
                 },
                 'Meta Tag': {
-                    0: "Perbaiki atau tambahkan meta tag yang sesuai dengan konten artikel untuk meningkatkan SEO.",
+                    0: "Tambahkan meta tag yang sesuai dengan konten artikel untuk meningkatkan SEO.",
                     5: "Pastikan meta description Anda mencakup kata kunci utama."
                 },
                 'Internal Links': {
-                    0: "Tambahkan tautan internal ke artikel lain di situs Anda untuk membantu SEO.",
-                    5: "Tambahkan lebih banyak tautan internal agar lebih membantu pembaca dan mesin pencari."
+                    0: "Tambahkan tautan internal ke artikel lain di situs Anda untuk membantu SEO."
                 },
                 'External Links': {
-                    0: "Tambahkan tautan eksternal yang relevan dengan artikel Anda untuk meningkatkan otoritas SEO.",
-                    5: "Cobalah menambahkan lebih banyak tautan eksternal ke sumber yang relevan."
+                    0: "Tambahkan tautan eksternal yang relevan dengan artikel Anda untuk meningkatkan otoritas SEO."
                 }
-            }
+            }"""
 
             # Menambahkan rekomendasi pada result_data
             recommendation_data = {
@@ -237,6 +341,7 @@ def AnalysisResult(request):
                 'title': title,
                 'content': content,
                 'total_score': total_score,
+                'optimization_level': optimization_level,
                 'criteria_scores': criteria_scores,
                 'recommendations': recommendation_data,
                 'keywords': [keyword for keyword, _ in keywords]

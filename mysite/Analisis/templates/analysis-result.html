@@ -157,8 +157,11 @@
                 {% endfor %}
             </table>
             
-            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}</p>
-            
+            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}
+                <span>
+                    ({{ result.optimization_level }})
+                </span>
+            </p>
         </div>
     </div>
 </section>
