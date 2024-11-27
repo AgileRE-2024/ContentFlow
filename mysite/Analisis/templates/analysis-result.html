@@ -26,85 +26,7 @@
                 </nav>
             </div>
           </header>
-          <!--
-<section class="analysis-result">
-    <div id="content">
-        <h1>Content Analysis Results</h1>
-        
-        <div class="score-box">
-            <p class="score-title">Judul Konten: "Panduan Optimalisasi SEO untuk Bisnis Online"</p>
-            <p class="score-title">Skor Total SEO: 8/10</p>
-            <div class="score-indicator">
-                <div class="progress-bar" style="width: 80%;"></div>
-            </div>
-            <p class="score-details">
-                <strong>Kata Kunci di Paragraf Pertama</strong>
-                <span class="tooltip-icon" data-tooltip="Kata kunci di awal artikel membantu mesin pencari memahami topik utama.">?</span><br>
-                ✅ 1 poin: Kata kunci "SEO" muncul di paragraf pertama konten.
-            </p>
-            
-            <div class="score-details">
-                <p class="score-details"><strong>Panjang Judul (Title Tag)</strong>
-                   <span class="tooltip-icon" data-tooltip="Panjang judul yang optimal (50-60 karakter) meningkatkan klik pada hasil pencarian.">?</span><br>
-                   ✅ 3 poin: Judul memiliki 55 karakter, yang berada dalam rentang optimal 50-60 karakter.</p>
 
-                <p class="score-details"><strong>Jumlah Heading (H1, H2, H3)</strong>
-                   <span class="tooltip-icon" data-tooltip="Penggunaan heading yang cukup mempermudah pembaca dan meningkatkan struktur SEO.">?</span><br>
-                   ✅ 1 poin: Terdapat 5 heading, yang sesuai dengan kriteria optimal 4-6 heading.</p>
-
-                <p class="score-details"><strong>Kata Kunci dalam Judul</strong>
-                   <span class="tooltip-icon" data-tooltip="Menyisipkan kata kunci utama dalam judul meningkatkan relevansi SEO.">?</span><br>
-                   ✅ 1 poin: Kata kunci utama "SEO" terdapat dalam &lt;title&gt;.</p>
-
-                <p class="score-details"><strong>Kata Kunci dalam Heading (H1, H2, H3)</strong>
-                   <span class="tooltip-icon" data-tooltip="Kata kunci dalam heading membantu mesin pencari memahami topik bagian tersebut.">?</span><br>
-                   ✅ 1 poin: Kata kunci utama "SEO" muncul dalam salah satu heading.</p>
-
-                <p class="score-details"><strong>Kata Kunci di Paragraf Pertama</strong>
-                   <span class="tooltip-icon" data-tooltip="Menggunakan kata kunci di paragraf pertama membantu mesin pencari memahami topik utama.">?</span><br>
-                   ✅ 1 poin: Kata kunci "SEO" muncul di paragraf pertama konten.</p>
-
-                <p class="score-details"><strong>Jumlah Kata dalam Artikel</strong>
-                   <span class="tooltip-icon" data-tooltip="Jumlah kata yang optimal (1000-1500) membantu mesin pencari memahami bahwa konten ini bermanfaat.">?</span><br>
-                   ❌ 0 poin: Artikel hanya memiliki 900 kata, di bawah rentang optimal 1000-1500 kata.</p>
-
-                <p class="score-details"><strong>Penggunaan Gambar dengan Alt Text</strong>
-                   <span class="tooltip-icon" data-tooltip="Alt text pada gambar yang relevan membantu mesin pencari dan aksesibilitas.">?</span><br>
-                   ✅ 1 poin: Gambar dalam artikel memiliki alt text yang mengandung kata kunci "SEO".</p>
-
-                <p class="score-details"><strong>Kata Kunci dalam Meta Description</strong>
-                   <span class="tooltip-icon" data-tooltip="Meta description yang mengandung kata kunci membantu klik pada hasil pencarian.">?</span><br>
-                   ✅ 1 poin: Meta description mengandung kata kunci utama "SEO".</p>
-
-                <p class="score-details"><strong>Internal Linking</strong>
-                   <span class="tooltip-icon" data-tooltip="Internal link memperkuat struktur situs dan memandu pengguna ke konten terkait.">?</span><br>
-                   ❌ 0 poin: Tidak ada internal link yang relevan dalam artikel.</p>
-
-                <p class="score-details"><strong>Eksternal Linking</strong>
-                   <span class="tooltip-icon" data-tooltip="Link eksternal ke sumber terpercaya meningkatkan kredibilitas artikel.">?</span><br>
-                   ✅ 1 poin: Artikel memiliki satu external link yang relevan.</p>
-            </div>
-
-
-            <p class="final-score">
-                <strong>Skala Skoring:</strong><br>
-                8-10 Poin: Sangat SEO-friendly<br>
-                5-7 Poin: SEO cukup baik, perlu sedikit perbaikan<br>
-                0-4 Poin: SEO kurang optimal, perlu banyak perbaikan
-            </p>
-            
-            <p class="final-score" >
-                <strong>Hasil Akhir:</strong> <br>
-                Konten ini sangat SEO-friendly dengan beberapa ruang untuk perbaikan, terutama dalam menambah jumlah kata dan internal linking untuk meningkatkan skor.<br>
-            </p>
-            
-        </div>
-        <div class="track-performance">
-            <p>Want to track your content performance? <a href="#">Track Now</a></p>
-        </div>
-    </div>
-</section>
--->
 <section class="analysis-result">
     <div id="content">
         <h1>Hasil Analisis</h1>
@@ -137,6 +59,12 @@
                 </tbody>
             </table>
 
+            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}
+                <span>
+                    ({{ result.optimization_level }})
+                </span>
+            </p>
+
             <p class="score-details"><strong>Rekomendasi</strong></p>
             <table class="score-details">
                 <tr>
@@ -146,16 +74,21 @@
                 {% for criteria, recommendation in result.recommendations.items %}
                     <tr>
                         <td>{{ criteria }}</td>
-                        <td>{{ recommendation }}</td>
+                        <td>
+                            {% if criteria == 'Heading Length' %}
+                                <ul>
+                                {% for item in recommendation %}
+                                    <li>• {{ item }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                {{ recommendation }}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
             
-            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}
-                <span>
-                    ({{ result.optimization_level }})
-                </span>
-            </p>
         </div>
     </div>
 </section>

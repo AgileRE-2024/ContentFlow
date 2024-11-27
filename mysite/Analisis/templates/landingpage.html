@@ -2,34 +2,19 @@
 <html lang="en">
   {% load static %}
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="ContentFlow helps you optimize your content for better engagement and visibility."
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
-    />
-    <link rel="stylesheet" href="{% static 'css/landingpage.css' %}" />
-    <link rel="icon" href="{% static 'images/LOGO.png' %}" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="ContentFlow helps you optimize your content for better engagement and visibility."/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/landingpage.css' %}"/>
+    <link rel="icon" href="{% static 'images/LOGO.png' %}"/>
     <title>ContentFlow</title>
   </head>
   <body style="font-family: 'Montserrat', sans-serif">
     <header class="text-gray-700 body-font border-b border-gray-200">
-      <div
-        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      >
-        <img
-          class="object-cover object-center rounded h-10 w-10 mr-2"
-          alt="Content optimization illustration"
-          src="{% static 'images/LOGO.png' %}"
-        />
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <img class="object-cover object-center rounded h-10 w-10 mr-2" alt="Content optimization illustration" src="{% static 'images/LOGO.png' %}"/>
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'home' %}">
           <span class="ml-3 text-xl">CONTENT FLOW</span>
         </a>

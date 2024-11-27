@@ -53,8 +53,9 @@ def AnalysisResult(request):
             meta_content = meta_description['content'] if meta_description else ''
 
             # Ambil gambar dan alt text
+            # Gambar dan alt text
             images = soup.find_all('img')
-            alt_count = sum(1 for img in images if img.get('alt'))
+            alt_count = sum(1 for img in images if hasattr(img, 'get') and img.get('alt'))
 
             # Ambil paragraf pertama
             all_paragraphs = soup.find_all('p')
@@ -185,12 +186,16 @@ def AnalysisResult(request):
             # Penentuan tingkat keoptimalan berdasarkan total skor
             if total_score >= 80:
                 optimization_level = "Optimal"
+                optimization_color = "optimal-green"  # Warna hijau
             elif 60 <= total_score < 80:
                 optimization_level = "Cukup Optimal"
+                optimization_color = "optimal-yellow"  # Warna kuning
             elif 40 <= total_score < 60:
                 optimization_level = "Kurang Optimal"
+                optimization_color = "optimal-orange"  # Warna oranye
             else:
                 optimization_level = "Tidak Optimal"
+                optimization_color = "optimal-red"  # Warna merah
             
             # Rekomendasi perbaikan
             recommendations = {}
@@ -287,53 +292,6 @@ def AnalysisResult(request):
                 recommendations['External Links'] = "✓"
             else:
                 recommendations['External Links'] = "Tidak ditemukan external link. Pertimbangkan untuk menambahkan link ke sumber eksternal yang relevan dan dapat dipercaya untuk meningkatkan otoritas halaman Anda."
-                
-            """recommendations = {
-                'Title Length': {
-                    0: "Perpanjang judul artikel Anda agar berada dalam rentang 50-60 karakter untuk hasil SEO yang lebih baik.",
-                    5: "Judul artikel bisa sedikit lebih panjang atau lebih pendek agar sesuai dengan panjang optimal 50-60 karakter."
-                },
-                'Heading Count': {
-                    0: "Tambahkan lebih banyak heading (H1, H2, H3) untuk membantu pembaca dan mesin pencari memahami struktur konten.",
-                    5: "Pertimbangkan untuk menambah satu heading lagi agar jumlah heading lebih optimal."
-                },
-                'Heading Length': {
-                    0: "Pastikan panjang heading Anda berada dalam rentang 20-70 karakter untuk hasil SEO yang lebih baik.",
-                    5: "Coba perbaiki heading yang terlalu panjang atau terlalu pendek agar sesuai dengan rentang panjang yang optimal."
-                },
-                'Keyword in Title': {
-                    0: "Pastikan kata kunci utama muncul di judul artikel untuk meningkatkan relevansi SEO.",
-                    5: "Coba untuk tidak memasukkan kata kunci utama lebih dari sekali di judul untuk hasil SEO yang lebih baik."
-                },
-                'Keyword in First Paragraph': {
-                    0: "Tempatkan kata kunci utama di paragraf pertama untuk membantu mesin pencari memahami topik utama.",
-                    5: "Cobalah untuk tidak menyebutkan kata kunci utama lebih dari dua kali di paragraf pertama."
-                },
-                'Content Length': {
-                    0: "Tambahkan lebih banyak konten (300-1500 kata) untuk meningkatkan SEO artikel Anda.",
-                    5: "Perpanjang artikel sedikit lagi agar lebih mendekati panjang optimal."
-                },
-                'Alt Tag on Images': {
-                    0: "Tambahkan tag 'alt' pada gambar di artikel Anda untuk meningkatkan SEO.",
-                    5: "Pastikan semua gambar memiliki tag 'alt' yang relevan dengan konten gambar."
-                },
-                'Meta Tag': {
-                    0: "Tambahkan meta tag yang sesuai dengan konten artikel untuk meningkatkan SEO.",
-                    5: "Pastikan meta description Anda mencakup kata kunci utama."
-                },
-                'Internal Links': {
-                    0: "Tambahkan tautan internal ke artikel lain di situs Anda untuk membantu SEO."
-                },
-                'External Links': {
-                    0: "Tambahkan tautan eksternal yang relevan dengan artikel Anda untuk meningkatkan otoritas SEO."
-                }
-            }"""
-
-            # Menambahkan rekomendasi pada result_data
-            recommendation_data = {
-                key: recommendations[key].get(score, "-") 
-                for key, score in criteria_scores.items()
-            }
 
             # Data untuk template
             result_data = {
@@ -342,8 +300,9 @@ def AnalysisResult(request):
                 'content': content,
                 'total_score': total_score,
                 'optimization_level': optimization_level,
+                "optimization_color": optimization_color,
                 'criteria_scores': criteria_scores,
-                'recommendations': recommendation_data,
+                'recommendations': recommendations,
                 'keywords': [keyword for keyword, _ in keywords]
             }
 
