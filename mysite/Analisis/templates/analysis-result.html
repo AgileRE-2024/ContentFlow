@@ -27,71 +27,79 @@
             </div>
           </header>
 
-<section class="analysis-result">
-    <div id="content">
-        <h1>Hasil Analisis</h1>
-        <div class="score-box">
-            <p class="score-details"><strong>URL:</strong> {{ result.url }}</p>
-            <p class="score-details"><strong>Judul:</strong> {{ result.title }}</p>
-
-            <p class="final-score"><strong>Kata Kunci Teratas</strong></p>
-            <ul class="final-score">
-                {% for keyword in result.keywords %}
-                    <li>{{ keyword }}</li>
-                {% endfor %}
-            </ul>            
-
-            <p class="score-details"><strong>Skor SEO per Kriteria</strong></p>
-            <table class="score-details">
-                <thead>
-                    <tr>
-                        <th>Kriteria</th>
-                        <th>Skor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for criteria, score in result.criteria_scores.items %}
-                    <tr>
-                        <td>{{ criteria }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            <p class="final-score"><strong>Total Skor SEO:</strong> {{ result.total_score }}
-                <span>
-                    ({{ result.optimization_level }})
-                </span>
-            </p>
-
-            <p class="score-details"><strong>Rekomendasi</strong></p>
-            <table class="score-details">
-                <tr>
-                    <th>Kriteria</th>
-                    <th>Rekomendasi</th>
-                </tr>
-                {% for criteria, recommendation in result.recommendations.items %}
-                    <tr>
-                        <td>{{ criteria }}</td>
-                        <td>
-                            {% if criteria == 'Heading Length' %}
-                                <ul>
-                                {% for item in recommendation %}
-                                    <li>• {{ item }}</li>
-                                {% endfor %}
-                                </ul>
-                            {% else %}
-                                {{ recommendation }}
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-            
-        </div>
-    </div>
-</section>
+          <section class="analysis-result">
+            <div id="content">
+                <h1>Analysis Result</h1>
+                
+                <!-- Bagian URL dan Judul -->
+                <div class="info-box">
+                    <p class="score-details"><strong>🌐 URL:</strong> {{ result.url }}</p>
+                    <p class="score-details"><strong>📖 Judul:</strong> {{ result.title }}</p>
+                </div>
+        
+                <!-- Kata Kunci Teratas -->
+                <div class="score-box">
+                    <p class="score-title">🔑 Kata Kunci Teratas</p>
+                    <ul class="final-score">
+                        {% for keyword in result.keywords %}
+                            <li>• {{ keyword }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+        
+                <!-- Skor SEO per Kriteria -->
+                <div class="score-box">
+                    <p class="score-title">📈 Skor SEO per Kriteria</p>
+                    <table class="score-details">
+                        <thead>
+                            <tr>
+                                <th>Kriteria</th>
+                                <th>Skor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for criteria, score in result.criteria_scores.items %}
+                            <tr>
+                                <td>{{ criteria }}</td>
+                                <td>{{ score }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- Total Skor -->
+                    <p class="final-score"><strong>🌟 Total Skor SEO:</strong> {{ result.total_score }} 
+                        <span>({{ result.optimization_level }})</span>
+                    </p>
+                </div>
+        
+                <!-- Rekomendasi -->
+                <div class="score-box">
+                    <p class="score-title">📌 Rekomendasi</p>
+                    <table class="score-details">
+                        <tr>
+                            <th>Kriteria</th>
+                            <th>Rekomendasi</th>
+                        </tr>
+                        {% for criteria, recommendation in result.recommendations.items %}
+                            <tr>
+                                <td>{{ criteria }}</td>
+                                <td>
+                                    {% if criteria == 'Heading Length' %}
+                                        <ul>
+                                        {% for item in recommendation %}
+                                            <li>• {{ item }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        {{ recommendation }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </section>        
 <footer class="text-gray-600 body-font border-t border-gray-200">
     <div class="container px-5 py-12 mx-auto flex flex-wrap md:flex-row md:flex-nowrap flex-col">
         <div class="w-64 flex-shrink-0 mx-auto text-center md:text-left">
