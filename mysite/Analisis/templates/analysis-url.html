@@ -35,14 +35,14 @@
                 <h2 id="analysis">Write the website URL</h2>
                 <div class="input-wrapper">
                     <span class="globe-icon">🌐</span>
-                    <input type="url" name="url" placeholder="Example: https://contentflow.com" required>
+                    <input type="url" name="url" placeholder="Example: https://contentflow.com">
                 </div>
-                <button type="submit" class="analyze-btn">Analyze Now</button>
+                <button type="submit" class="analyze-btn" id="analyze-btn">Analyze Now</button>
             </div>
         </form>
         {% if error %}
-            <p style="color: red;">Error: {{ error }}</p>
-        {% endif %}
+          <p id="error-section" style="color: red;">Error: {{ error }}</p>
+        {% endif %}    
     </section>
     <footer class="text-gray-600 body-font border-t border-gray-200">
         <div
