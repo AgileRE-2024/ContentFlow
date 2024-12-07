@@ -88,4 +88,3 @@ The application utilizes Python-based *machine learning* algorithms to:
 ---
 
 Thank you for using **Content Flow**! We hope this application helps you create better-optimized content. 🚀
-```
