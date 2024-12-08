@@ -187,3 +187,101 @@ transition: width 0.5s ease-in-out;
 .tooltip-icon:hover::after {
     display: block;
 }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
+    color: #333;
+}
+
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.analysis-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#content {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    padding: 20px;
+    text-align: left;
+}
+
+.score-box, .info-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FFFCE0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #374375;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #B4807D;
+    color: #fff;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #eaeaea;
+    text-align: center;
+    color: #777;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.footer-container h2 {
+    color: #B4807D;
+}
+
+footer a {
+    color: #B4807D;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+}
