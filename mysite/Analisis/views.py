@@ -210,7 +210,7 @@ def AnalysisResult(request):
 
             # Rekomendasi 2: Heading Count
             if heading_count < 2:
-                recommendations['Heading Count'] = "Tambahkan heading lagi setidaknya hingga berjumlah 2 atau 3 heading untuk mempermudah pembaca memahami struktur artikel."
+                recommendations['Heading Count'] = "Jumlah heading masih sedikit, tambahkan heading lagi setidaknya hingga berjumlah 2 atau 3 heading untuk mempermudah pembaca memahami struktur artikel."
             elif heading_count > 3:
                 recommendations['Heading Count'] = "Jumlah heading terlalu banyak, coba sederhanakan struktur artikel setidaknya hingga heading berjumlah 2 atau 3."
             elif heading_count == 0:
