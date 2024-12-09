@@ -1,212 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="CodeHim" />
-    <title>FAQ PAGE</title>
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{% static 'css/faq.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-  </head>
-  <body>
-   
-    <main class="cd__main">
-      
-      <main>
-        <section class="card">
-          <!-- cube img -->
-          <img
-            src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-box-desktop.svg"
-            alt="Box"
-            class="card__box"
-          />
-          <!-- Images -->
-          <div class="card__img">
-            <!-- mobile -->
-            <img
-              class="card__img-mobile"
-              src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-woman-online-mobile.svg"
-              alt="Woman online Mobile"
-            />
-            <!-- desktop -->
-            <img
-              class="card__img-desktop"
-              src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-woman-online-desktop.svg"
-              alt="Woman online desktop"
-            />
-          </div>
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ContentFlow helps you optimize your content for better engagement and visibility." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" />
+  <link rel="stylesheet" href="{% static 'css/faq.css' %}" />
+  <link rel="icon" href="{% static 'images/LOGO.png' %}" />
+  <title>ContentFlow</title>
+</head>
 
-          <!-- Text -->
-          <div class="card__text">
-            <h1>FAQ</h1>
+<body>
 
-            <div class="accordion">
-              <!-- item 1 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  1. Apa itu Content Flow?
-                </button>
+  <header class="text-gray-700 body-font border-b border-gray-200">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <img class="object-cover object-center rounded h-10 w-10 mr-2" alt="Content optimization illustration" src="{% static 'images/LOGO.png' %}" />
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'home' %}">
+        <span class="ml-3 text-xl">CONTENT FLOW</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="{% url 'analysis' %}" class="mr-5 hover:text-gray-900">Analysis</a>
+        <a href="{% url 'faq' %}" class="mr-5 hover:text-gray-900">FAQ</a>
+        <a class="mr-5 hover:text-gray-900" href="">Sign In</a>
+      </nav>
+    </div>
+  </header>
 
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    <p>
-                      Content Flow adalah platform teknologi yang dirancang untuk membantu tim pemasaran, penulis konten, dan spesialis SEO dalam meningkatkan kualitas dan kinerja konten digital mereka. Platform ini menggunakan analitik data, teknologi NLP (Neuro Linguistic Programming), dan fitur utama seperti content analysis, content performance monitoring, dan content recommendation untuk memberikan wawasan dan rekomendasi berbasis data.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- item 2 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  2. Apa tujuan utama dari Content Flow?
-                </button>
+<main class="cd__main">
+  <section class="card">
+    <!-- Images -->
+    <div class="card__img">
+      <img class="card__img-desktop" src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-woman-online-desktop.svg" alt="Woman online desktop" />
+    </div>
 
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Tujuan utama Content Flow adalah:
-                    <br>
-1. Meningkatkan Visibilitas di Mesin Pencari: Memastikan konten sesuai dengan standar SEO sehingga lebih mudah ditemukan oleh audiens.
-<br>
-2. Meningkatkan Engagement: Membantu menciptakan konten yang menarik dan relevan untuk audiens target, sehingga meningkatkan keterlibatan dan konversi.
-<br>
-3. Memonitor Performa Konten: Melacak kinerja konten secara real-time untuk mengevaluasi efektivitasnya dan melakukan perbaikan berdasarkan data.
-                  </div>
-                </div>
-              </div>
-              <!-- item 3 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  3. Apa saja fitur utama dari Content Flow?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Content Flow menyediakan tiga fitur utama:
-                    <br>
-1. Content Analysis: Menganalisis konten untuk SEO, kepadatan kata kunci, keterbacaan, dan struktur konten. Fitur ini juga mencakup optimasi kata kunci untuk memastikan konten dioptimalkan dengan baik untuk mesin pencari.
-<br>
-2. Content Performance Monitoring: Memantau kinerja konten yang telah diterbitkan dengan metrik seperti jumlah tampilan, tingkat keterlibatan, bounce rate, dan konversi. Ini membantu memahami bagaimana konten berperforma di dunia nyata.
-<br>
-3. Content Recommendation: Memberikan saran untuk konten masa depan dan peningkatan konten yang sudah ada berdasarkan data dan analisis. Ini termasuk ide topik baru dan rekomendasi untuk perbaikan konten yang ada.
-                  </div>
-                </div>
-              </div>
-              <!-- item 4 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  4. Bagaimana cara kerja fitur Content Analysis?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Fitur Content Analysis melakukan evaluasi mendalam terhadap konten berdasarkan berbagai faktor:
-                    <br>
-1. SEO: Mengevaluasi seberapa baik konten dioptimalkan untuk kata kunci target, meta tags, struktur konten, dan elemen SEO lainnya.
-<br>
-2. Keyword Optimization: Memberikan rekomendasi untuk penempatan dan penggunaan kata kunci secara efektif dalam konten.
-<br>
-3. Readability: Mengukur tingkat keterbacaan konten menggunakan indeks seperti Flesch-Kincaid untuk memastikan bahasa mudah dipahami oleh audiens.
-<br>
-4. Content Structure: Menganalisis struktur konten untuk memastikan alur yang baik dan mudah diikuti.
-                  </div>
-                </div>
-              </div>
-              <!-- item 5 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  5. Apa itu Content Performance Monitoring dan bagaimana cara kerjanya?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Content Performance Monitoring melacak dan mengevaluasi kinerja konten setelah diterbitkan. Fitur ini memantau berbagai metrik performa seperti:
-                    <br>
-1. Views: Jumlah tampilan yang diterima oleh konten.
-<br>
-2. Engagement Rate: Tingkat interaksi pengguna dengan konten, termasuk likes, shares, dan comments.
-<br>
-3. Bounce Rate: Persentase pengguna yang meninggalkan halaman setelah melihat hanya satu halaman.
-<br>
-4. Conversion Rate: Mengukur seberapa baik konten dalam mengonversi pengunjung menjadi pelanggan atau memenuhi tujuan lainnya.
-                  </div>
-                </div>
-              </div>
-              <!-- item 6 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  6. Bagaimana fitur Content Recommendation berfungsi?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Fitur Content Recommendation membantu dalam merencanakan dan memperbaiki konten melalui langkah-langkah berikut:
-                    <br>
-1. Pengisian Form: Anda memulai dengan mengisi form rekomendasi di platform, yang mencakup informasi seperti tujuan konten, audiens target, dan topik yang diinginkan.
-<br>
-2. Contoh Rekomendasi Konten: Setelah form diisi, platform memberikan contoh rekomendasi konten yang relevan berdasarkan data dan analisis. Ini termasuk ide topik baru, saran untuk perbaikan konten yang ada, dan teknik penulisan yang lebih efektif.
-<br>
-3. Bantuan melalui Chat AI: Jika Anda masih bingung atau memerlukan klarifikasi lebih lanjut tentang rekomendasi yang diberikan, Anda dapat menggunakan fitur chat AI di platform. Chat AI akan menjawab pertanyaan Anda dan memberikan penjelasan tambahan tentang rekomendasi yang diberikan.
-                  </div>
-                </div>
-              </div>
-              <!-- item 7 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  7. Apakah integrasi dengan alat eksternal termasuk dalam fitur Content Flow?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Integrasi dengan alat eksternal tidak dianggap sebagai fitur berdiri sendiri dalam Content Flow. Namun, integrasi digunakan untuk mendukung fitur seperti Content Analysis dan Content Performance Monitoring dengan menyediakan data tambahan yang memperkaya analisis dan pelacakan performa.
-
-                  </div>
-                </div>
-              </div>
-              <!-- item 8 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  8. Apa manfaat utama menggunakan Content Flow?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    1. Efisiensi: Menghemat waktu dengan memberikan analisis otomatis dan rekomendasi yang dapat langsung diterapkan.
-                    <br>
-2. Pengambilan Keputusan Berbasis Data: Membantu dalam membuat keputusan yang lebih tepat berdasarkan data yang dikumpulkan.
-<br>
-3. Peningkatan Kinerja Konten: Melalui optimasi dan rekomendasi yang disarankan, konten lebih mungkin untuk tampil lebih baik di mesin pencari dan menarik audiens.
-<br>
-4. Keunggulan Kompetitif: Membantu tetap kompetitif dengan menyediakan wawasan terkini dan relevan tentang performa konten dan tren pasar.
-                  </div>
-                </div>
-              </div>
-              <!-- item 9 -->
-              <div class="accordion__item">
-                <button class="accordion__title">
-                  9. Bagaimana cara mulai menggunakan Content Flow?
-                </button>
-
-                <div class="accordion__collapse collapse">
-                  <div class="accordion__text">
-                    Untuk memulai dengan Content Flow, daftarlah melalui situs resmi kami dan ikuti panduan pengaturan awal. Anda dapat mengunggah konten atau memasukkan URL konten untuk memulai analisis, memantau performa, dan mendapatkan rekomendasi untuk perbaikan.
-
-                  </div>
-                </div>
-              </div>
+    <!-- Text -->
+    <div class="card__text">
+      <h1>FAQ</h1>
+      <div class="accordion">
+        <!-- Item 1 -->
+        <div class="accordion__item">
+          <button class="accordion__title">1. Apa itu Content Flow?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              <p>
+                Content Flow adalah platform yang dirancang untuk membantu pengguna meningkatkan kualitas dan performa konten mereka dengan mudah. 
+                Cukup masukkan URL konten, dan sistem akan memberikan skor SEO otomatis serta rekomendasi untuk bagian konten yang masih belum optimal.
+              </p>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
 
-    
+        <!-- Item 2 -->
+        <div class="accordion__item">
+          <button class="accordion__title">2. Apa tujuan utama dari Content Flow?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              Tujuan utama Content Flow adalah: <br>
+              <br>1. Memberikan penilaian SEO secara otomatis untuk setiap URL yang dimasukkan.
+              <br>2. Membantu pengguna mengidentifikasi bagian konten yang perlu diperbaiki.
+              <br>3. Mengoptimalkan konten agar lebih mudah ditemukan oleh mesin pencari dan menarik audiens.
+            </div>
+          </div>
+        </div>
 
-    <!-- Script JS -->
-    <script src="{% static 'js/faq.js' %}"></script>
-   
-  </body>
+        <!-- Item 3 -->
+        <div class="accordion__item">
+          <button class="accordion__title">3. Bagaimana cara kerja Content Flow?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              Cara kerja Content Flow sangat sederhana: <br>
+              <br>1. Pengguna cukup memasukkan URL konten ke platform.
+              <br>2. Sistem secara otomatis menganalisis konten berdasarkan skor SEO yang telah kami buat.
+              <br>3. Rekomendasi diberikan untuk memperbaiki dan mengoptimalkan bagian-bagian konten yang kurang sesuai.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="accordion__item">
+          <button class="accordion__title">4. Apa yang dimaksud dengan skor SEO?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              Skor SEO adalah hasil evaluasi otomatis yang menunjukkan seberapa baik konten dioptimalkan untuk mesin pencari. 
+              Skor ini mencakup analisis elemen-elemen penting seperti struktur konten, meta tags, penggunaan kata kunci, dan lain-lain.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="accordion__item">
+          <button class="accordion__title">5. Apa manfaat utama menggunakan Content Flow?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              Manfaat menggunakan Content Flow meliputi: <br>
+              <br>1. Analisis otomatis yang menghemat waktu.
+              <br>2. Rekomendasi langsung untuk meningkatkan visibilitas konten.
+              <br>3. Kemudahan penggunaan tanpa perlu memahami SEO secara mendalam.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="accordion__item">
+          <button class="accordion__title">6. Bagaimana cara mulai menggunakan Content Flow?</button>
+          <div class="accordion__collapse collapse">
+            <div class="accordion__text">
+              Mulai menggunakan Content Flow sangat mudah: <br>
+              <br>1. Masukkan URL konten Anda ke dalam platform.
+              <br>2. Tunggu beberapa saat hingga sistem selesai menganalisis.
+              <br>3. Dapatkan skor SEO dan rekomendasi yang dapat langsung Anda terapkan.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="text-gray-600 body-font border-t border-gray-200">
+  <div class="container px-5 py-12 mx-auto flex flex-wrap md:flex-row md:flex-nowrap flex-col">
+    <div class="w-64 flex-shrink-0 mx-auto text-center md:text-left">
+      <a class="flex title-font font-medium items-center justify-center md:justify-start text-gray-900">
+        <img src="{% static 'images/LOGO.png' %}" alt="" style="width: 15%">
+        <span class="ml-3 text-xl">Content Flow</span>
+      </a>
+      <p class="mt-2 text-sm text-gray-500">Your partner in content optimization.</p>
+    </div>
+    <div class="flex-grow md:pl-20 md:mt-0 mt-6">
+      <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">FEATURE</h2>
+      <nav class="list-none mb-10">
+        <li>
+          <a class="text-gray-600 hover:text-gray-800">Content Analysis</a>
+        </li>
+        <li>
+          <a class="text-gray-600 hover:text-gray-800">Content Recommendations</a>
+        </li>
+      </nav>
+    </div>
+    <div class="w-full md:w-1/4 flex-shrink-0 md:mt-0 mt-6">
+      <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CONTACT</h2>
+      <p class="text-gray-500 hover:text-gray-900">Email: contentflow@mail.com</p>
+      <p class="text-gray-500 hover:text-gray-900">Phone: 123-456-7890</p>
+    </div>
+  </div>
+  <div class="bg-gray-200 bg-opacity-75">
+    <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+      <p class="text-gray-500 text-sm text-center sm:text-left">© 2024 ContentFlow — All rights reserved</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Script JS -->
+<script src="{% static 'js/faq.js' %}"></script>
+</body>
 </html>

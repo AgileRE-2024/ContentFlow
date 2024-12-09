@@ -10,51 +10,27 @@
   --dividerGray: hsl(240, 5%, 91%);
 }
 
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-.cd__main {
-  background: linear-gradient(
-    var(--gradientViolet),
-    var(--gradientBlue)
-  ) !important;
-}
-
 body {
   margin: 0;
   padding: 0;
-  font-family: "Kumbh Sans", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  background: linear-gradient(var(--gradientViolet), var(--gradientBlue));
+  font-family: "Montserrat", sans-serif;
 }
 
 main {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .card {
-  background-color: #fff;
-  border-radius: 2.5rem;
-  min-width: 33rem;
-  max-width: 92rem;
+  background-color: #FFF9EB;
+  min-width: auto;
+  max-width: auto;
   margin: 0 2.5rem 6rem;
   padding: 0 2.3rem 4.8rem;
   background-image: url("https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/bg-pattern-mobile.svg");
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: 24rem;
 }
 
 .card__box {
