@@ -39,21 +39,10 @@
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <div class="relative dropdown mr-5">
-            <button
-              class="hover:text-gray-900 focus:outline-none"
-              onclick="toggleDropdown()"
-            >
-              Feature
-            </button>
-            <div class="absolute dropdown-content shadow-md mt-1">
-              <a href="{% url 'analysis' %}">Content Analysis</a>
-              <a href="{% url 'recommendation' %}">Content Recommendations</a>
-            </div>
-          </div>
-          <a href="{% url 'faq' %}" class="mr-5 hover:text-gray-900" href=""
-            >FAQ</a
+          <a href="{% url 'analysis' %}" class="mr-5 hover:text-gray-900"
+            >Analysis</a
           >
+          <a href="{% url 'faq' %}" class="mr-5 hover:text-gray-900">FAQ</a>
           <a class="mr-5 hover:text-gray-900" href="">Sign In</a>
         </nav>
       </div>
@@ -75,14 +64,15 @@
               type="url"
               name="url"
               placeholder="Example: https://contentflow.com"
-              required
             />
           </div>
-          <button type="submit" class="analyze-btn">Analyze Now</button>
+          <button type="submit" class="analyze-btn" id="analyze-btn">
+            Analyze Now
+          </button>
         </div>
       </form>
       {% if error %}
-      <p style="color: red">Error: {{ error }}</p>
+      <p id="error-section" style="color: red">Error: {{ error }}</p>
       {% endif %}
     </section>
     <footer class="text-gray-600 body-font border-t border-gray-200">
@@ -93,20 +83,12 @@
           <a
             class="flex title-font font-medium items-center justify-center md:justify-start text-gray-900"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7h20L12 2z"></path>
-              <path d="M2 17l10 5 10-5V7L12 12 2 7v10z"></path>
-            </svg>
-            <span class="ml-3 text-xl">ContentFlow</span>
+            <img
+              src="{% static 'images/LOGO.png' %}"
+              alt=""
+              style="width: 15%"
+            />
+            <span class="ml-3 text-xl">Content Flow</span>
           </a>
           <p class="mt-2 text-sm text-gray-500">
             Your partner in content optimization.
@@ -117,7 +99,7 @@
           <h2
             class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
           >
-            CATEGORIES
+            FEATURE
           </h2>
           <nav class="list-none mb-10">
             <li>
@@ -127,9 +109,6 @@
               <a class="text-gray-600 hover:text-gray-800"
                 >Content Recommendations</a
               >
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">FAQ</a>
             </li>
           </nav>
         </div>

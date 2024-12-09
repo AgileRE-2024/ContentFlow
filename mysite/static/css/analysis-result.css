@@ -1,3 +1,72 @@
+.analysis-result {
+    background: #FFF9EB;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pastikan tinggi minimum body mencakup seluruh viewport */
+    color: #333;
+}
+/* Kontainer utama */
+#content {
+    padding: 40px 30px; /* Tambahkan padding atas */
+    border-radius: 12px;
+    max-width: 1000px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    position: relative;
+}
+/* Judul dengan gradien warna */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards ease-in-out;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Kotak untuk hasil skor SEO */
+.score-box {
+    border: 1px solid #B4807D;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #Fffce0;
+}
+/* Judul skor SEO */
+.score-title {
+    font-weight: 800;
+    font-size: 1.4em;
+    color: #374375;
+    margin-bottom: 10px;
+}
+/* Detail skor SEO */
+.score-details {
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFCE0;
+    border: 1px solid #B4807D;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.score-list {
+    margin: 1rem 1rem 1rem 1rem;
+}
+
 /* Additional styles for dropdown */
 .dropdown-content {
     display: none; /* Hide dropdown by default */
@@ -56,6 +125,7 @@ h1 {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
+
 /* Kotak untuk hasil skor SEO */
 .score-box {
     border: 1px solid #B4807D;
@@ -73,12 +143,12 @@ h1 {
 }
 /* Detail skor SEO */
 .score-details {
-    font-weight: 400;
-    font-size: 1em;
-    line-height: 1.6;
-    color: #555;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFCE0;
+    border: 1px solid #B4807D;
     text-align: left;
-    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 /* Skor Final */
 .final-score {
@@ -185,4 +255,102 @@ transition: width 0.5s ease-in-out;
 }
 .tooltip-icon:hover::after {
     display: block;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
+    color: #333;
+}
+
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    background: linear-gradient(45deg, #DFAEA0, #B4807D, #374375);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.analysis-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#content {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    padding: 20px;
+    text-align: left;
+}
+
+.score-box, .info-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FFFCE0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #374375;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #B4807D;
+    color: #fff;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #eaeaea;
+    text-align: center;
+    color: #777;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.footer-container h2 {
+    color: #B4807D;
+}
+
+footer a {
+    color: #B4807D;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
 }
