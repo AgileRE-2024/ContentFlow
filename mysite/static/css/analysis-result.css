@@ -1,3 +1,6 @@
+header {
+    background-color: rgb(255, 255, 255);
+}
 .analysis-result {
     background: #FFF9EB;
     font-family: Arial, sans-serif;
@@ -33,6 +36,11 @@ h1 {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
+h1:hover {
+    text-shadow: 2px 2px 10px #ffcbb5, 2px 2px 20px #fcdcdc;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
 
 /* Kotak untuk hasil skor SEO */
 .score-box {
@@ -40,7 +48,7 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
-    background-color: #Fffce0;
+    background-color: #FFFCF5;
 }
 /* Judul skor SEO */
 .score-title {
@@ -69,14 +77,19 @@ h1 {
 
 /* Additional styles for dropdown */
 .dropdown-content {
-    display: none; /* Hide dropdown by default */
-    background-color: white; /* Set background color to white */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Border around dropdown */
-    border-radius: 0.375rem; /* Rounded corners */
-    z-index: 10; /* Ensure dropdown is above other content */
+    display: none;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .dropdown.active .dropdown-content {
-    display: block; /* Show dropdown when active */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 .dropdown-content a {
     display: block; /* Make links block level for full width */
@@ -84,7 +97,9 @@ h1 {
     color: #4A5568; /* Text color */
 }
 .dropdown-content a:hover {
-    background-color: rgba(237, 234, 248, 1); /* Change background on hover */
+    background-color: rgba(237, 234, 248, 1);
+    color: #333;
+    transition: all 0.2s ease-in-out;
 }
 .dropdown-content a:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Border between items */
@@ -179,14 +194,15 @@ h1 {
     text-decoration: none;
     font-weight: 600;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-/* Hover efek untuk tombol rekomendasi */
 .recommendation-link:hover {
-    background-color: #8F5A59;
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    background-color: #8f597e;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
 /* Tombol kembali ke halaman sebelumnya */
 .back-button {
     position: absolute;
@@ -282,7 +298,7 @@ h1 {
 }
 
 #content {
-    background: #ffffff;
+    background: linear-gradient(to left, #FBD7C7, #FFF5DC);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
@@ -301,8 +317,9 @@ h1 {
 .score-title {
     font-size: 1.5em;
     font-weight: 700;
-    color: #374375;
+    color: #825012;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 table {
@@ -323,11 +340,7 @@ th {
 }
 
 footer {
-    margin-top: 40px;
-    padding: 20px;
-    background: #eaeaea;
-    text-align: center;
-    color: #777;
+    background-color: white;
 }
 
 .footer-container {
@@ -351,6 +364,6 @@ footer a:hover {
 
 .footer-bottom {
     font-size: 14px;
-    color: #555;
+    color: #ffffff;
     margin-top: 20px;
 }

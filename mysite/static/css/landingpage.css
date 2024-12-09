@@ -1,3 +1,8 @@
+
+header {
+    background-color: white;
+}
+
 /* Additional styles for dropdown */
 .dropdown-content {
     display: none; /* Hide dropdown by default */
