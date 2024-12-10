@@ -72,6 +72,12 @@
         <!-- Skor SEO per Kriteria -->
         <div class="score-box">
             <p class="score-title">📈 SEO Score by Criteria</p>
+            <p class="text-sm text-gray-600 mb-4"">
+              Below are the individual scores for each SEO criterion assessed. These 
+              scores reflect how well your content aligns with best practices for 
+              search engine optimization. For detailed descriptions of each criterion, 
+              <a href="#in-depth-insights" class="text-brown-600 underline">click here</a>.
+            </p>
             <table class="score-details">
                 <thead>
                     <tr>
@@ -120,137 +126,137 @@
         </div>
 
         <!-- Skor SEO per Kriteria -->
-        <div class="score-box">
+        <div class="score-box" id="in-depth-insights">
             <p class="score-title">📈 In-Depth Scoring Insights</p>
             <table class="score-details">
-                <thead>
-                    <tr>
-                        <th>Criteria</th>
-                        <th>Description</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Title Length -->
-                    <tr>
-                        <td rowspan="3">Title Length</td>
-                        <td>Panjang judul berada dalam rentang optimal (50-60 karakter)</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Panjang judul mendekati optimal (45-49 atau 61-65 karakter)</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Panjang judul di luar rentang optimal (kurang dari 45 atau lebih dari 65 karakter)</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Heading Count -->
-                    <tr>
-                        <td rowspan="3">Heading Count</td>
-                        <td>Jumlah heading dalam halaman adalah 2-3</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Jumlah heading adalah 1</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Tidak ada heading atau jumlah heading lebih dari 3</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Heading Length -->
-                    <tr>
-                        <td rowspan="3">Heading Length</td>
-                        <td>Semua heading memiliki panjang antara 20-70 karakter</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Sebagian besar heading memiliki panjang antara 20-70 karakter</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Tidak ada heading dengan panjang antara 20-70 karakter</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Keyword in Title -->
-                    <tr>
-                        <td rowspan="3">Keyword in Title</td>
-                        <td>Judul mengandung kata kunci utama satu kali</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Judul mengandung kata kunci utama dua kali</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Kata kunci utama tidak ada atau muncul lebih dari dua kali dalam judul</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Keyword in First Paragraph -->
-                    <tr>
-                        <td rowspan="3">Keyword in First Paragraph</td>
-                        <td>Paragraf pertama mengandung kata kunci utama 1-2 kali</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Paragraf pertama mengandung kata kunci utama 3 kali</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Kata kunci utama tidak ditemukan atau muncul lebih dari 3 kali di paragraf pertama</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Alt Tag on Images -->
-                    <tr>
-                        <td rowspan="3">Alt Tag on Images</td>
-                        <td>Semua gambar memiliki atribut alt yang relevan</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Beberapa gambar memiliki atribut alt yang relevan</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Semua gambar tidak memiliki atribut alt atau tidak ada gambar sama sekali</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Meta Tag -->
-                    <tr>
-                        <td rowspan="3">Meta Tag</td>
-                        <td>Terdapat meta description dan ada kata kunci di dalamnya</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Terdapat meta description tetapi tidak ada kata kunci di dalamnya</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Tidak ada meta description</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- Internal Links -->
-                    <tr>
-                        <td rowspan="2">Internal Links</td>
-                        <td>Terdapat internal links</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Tidak ada internal links</td>
-                        <td>0</td>
-                    </tr>
-                    <!-- External Links -->
-                    <tr>
-                        <td rowspan="2">External Links</td>
-                        <td>Terdapat external links</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Tidak ada external links</td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </table>     
+              <thead>
+                  <tr>
+                      <th>Criteria</th>
+                      <th>Description</th>
+                      <th>Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- Title Length -->
+                  <tr>
+                      <td rowspan="3">Title Length</td>
+                      <td>The title length is within the optimal range (50-60 characters)</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>The title length is close to optimal (45-49 or 61-65 characters)</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>The title length is outside the optimal range (less than 45 or more than 65 characters)</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Heading Count -->
+                  <tr>
+                      <td rowspan="3">Heading Count</td>
+                      <td>The page contains 2-3 headings</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>The page contains 1 heading</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>No headings or more than 3 headings</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Heading Length -->
+                  <tr>
+                      <td rowspan="3">Heading Length</td>
+                      <td>All headings are between 20-70 characters long</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>Most headings are between 20-70 characters long</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>No headings are between 20-70 characters long</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Keyword in Title -->
+                  <tr>
+                      <td rowspan="3">Keyword in Title</td>
+                      <td>The title contains the primary keyword once</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>The title contains the primary keyword twice</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>The primary keyword is missing or appears more than twice in the title</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Keyword in First Paragraph -->
+                  <tr>
+                      <td rowspan="3">Keyword in First Paragraph</td>
+                      <td>The first paragraph contains the primary keyword 1-2 times</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>The first paragraph contains the primary keyword 3 times</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>The primary keyword is missing or appears more than 3 times in the first paragraph</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Alt Tag on Images -->
+                  <tr>
+                      <td rowspan="3">Alt Tag on Images</td>
+                      <td>All images have relevant alt attributes</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>Some images have relevant alt attributes</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>No images have alt attributes or there are no images</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Meta Tag -->
+                  <tr>
+                      <td rowspan="3">Meta Tag</td>
+                      <td>A meta description exists and contains a keyword</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>A meta description exists but does not contain a keyword</td>
+                      <td>5</td>
+                  </tr>
+                  <tr>
+                      <td>No meta description</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- Internal Links -->
+                  <tr>
+                      <td rowspan="2">Internal Links</td>
+                      <td>Internal links are present</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>No internal links are present</td>
+                      <td>0</td>
+                  </tr>
+                  <!-- External Links -->
+                  <tr>
+                      <td rowspan="2">External Links</td>
+                      <td>External links are present</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>No external links are present</td>
+                      <td>0</td>
+                  </tr>
+              </tbody>
+          </table>          
         </div>        
       </div>
     </section>
