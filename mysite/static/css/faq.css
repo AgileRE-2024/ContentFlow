@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
-
+header {
+  background-color: white;
+}
 :root {
   --textBlue: hsl(39, 62%, 68%);
   --textRed: hsl(14, 88%, 65%);

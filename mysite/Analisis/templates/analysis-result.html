@@ -71,33 +71,35 @@
 
         <!-- Skor SEO per Kriteria -->
         <div class="score-box">
-          <p class="score-title">📈 SEO Score by Criteria</p>
-          <table class="score-details">
-            <thead>
-              <tr>
-                <th>Criteria</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for criteria, score in result.criteria_scores.items %}
-              <tr>
-                <td>{{ criteria }}</td>
-                <td>{{ score }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          <p class="final-score">
-            <strong>🌟 Total SEO Score:</strong> {{ result.total_score }}
-            <span>({{ result.optimization_level }})</span>
-          </p>
+            <p class="score-title">📈 SEO Score by Criteria</p>
+            <table class="score-details">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic data loop -->
+                    {% for criteria, score in result.criteria_scores.items %}
+                    <tr>
+                        <td>{{ criteria }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class="final-score">
+                <strong>🌟 Total SEO Score:</strong> {{ result.total_score }}
+                <span>({{ result.optimization_level }})</span>
+            </p>
         </div>
+        
 
         <!-- Rekomendasi -->
         <div class="score-box">
           <p class="score-title">📌 Recommendations</p>
-          <table class="score-details">
+          <table class="score-details" style="font-size: 14px;">
             <tr>
               <th>Criteria</th>
               <th>Recommendation</th>
@@ -107,17 +109,149 @@
               <td>{{ criteria }}</td>
               <td>
                 {% if criteria == 'Heading Length' %}
-                <ul>
-                  {% for item in recommendation %}
-                  <li>• {{ item }}</li>
-                  {% endfor %}
-                </ul>
+                {% for item in recommendation %}
+                  <li>{{ item }}</li>
+                {% endfor %}
                 {% else %} {{ recommendation }} {% endif %}
               </td>
             </tr>
             {% endfor %}
           </table>
         </div>
+
+        <!-- Skor SEO per Kriteria -->
+        <div class="score-box">
+            <p class="score-title">📈 In-Depth Scoring Insights</p>
+            <table class="score-details">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Description</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Title Length -->
+                    <tr>
+                        <td rowspan="3">Title Length</td>
+                        <td>Panjang judul berada dalam rentang optimal (50-60 karakter)</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Panjang judul mendekati optimal (45-49 atau 61-65 karakter)</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Panjang judul di luar rentang optimal (kurang dari 45 atau lebih dari 65 karakter)</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Heading Count -->
+                    <tr>
+                        <td rowspan="3">Heading Count</td>
+                        <td>Jumlah heading dalam halaman adalah 2-3</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah heading adalah 1</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Tidak ada heading atau jumlah heading lebih dari 3</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Heading Length -->
+                    <tr>
+                        <td rowspan="3">Heading Length</td>
+                        <td>Semua heading memiliki panjang antara 20-70 karakter</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Sebagian besar heading memiliki panjang antara 20-70 karakter</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Tidak ada heading dengan panjang antara 20-70 karakter</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Keyword in Title -->
+                    <tr>
+                        <td rowspan="3">Keyword in Title</td>
+                        <td>Judul mengandung kata kunci utama satu kali</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Judul mengandung kata kunci utama dua kali</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Kata kunci utama tidak ada atau muncul lebih dari dua kali dalam judul</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Keyword in First Paragraph -->
+                    <tr>
+                        <td rowspan="3">Keyword in First Paragraph</td>
+                        <td>Paragraf pertama mengandung kata kunci utama 1-2 kali</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Paragraf pertama mengandung kata kunci utama 3 kali</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Kata kunci utama tidak ditemukan atau muncul lebih dari 3 kali di paragraf pertama</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Alt Tag on Images -->
+                    <tr>
+                        <td rowspan="3">Alt Tag on Images</td>
+                        <td>Semua gambar memiliki atribut alt yang relevan</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Beberapa gambar memiliki atribut alt yang relevan</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Semua gambar tidak memiliki atribut alt atau tidak ada gambar sama sekali</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Meta Tag -->
+                    <tr>
+                        <td rowspan="3">Meta Tag</td>
+                        <td>Terdapat meta description dan ada kata kunci di dalamnya</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Terdapat meta description tetapi tidak ada kata kunci di dalamnya</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Tidak ada meta description</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- Internal Links -->
+                    <tr>
+                        <td rowspan="2">Internal Links</td>
+                        <td>Terdapat internal links</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Tidak ada internal links</td>
+                        <td>0</td>
+                    </tr>
+                    <!-- External Links -->
+                    <tr>
+                        <td rowspan="2">External Links</td>
+                        <td>Terdapat external links</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Tidak ada external links</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>     
+        </div>        
       </div>
     </section>
 
