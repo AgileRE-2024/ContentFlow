@@ -3,7 +3,12 @@
 ---
 
 ## **About Us**
-**Group 1, Software Development Practicum I1**
+
+**Product Owners**
+- Badrus Zaman, S.Kom., M.Cs. (PIC)
+- Dr. Indra Kharisma Raharjana, S.Kom., M.T.
+
+**Group 1 - Software Development Practicum I1**
 - Alma Alya Cipta Putri (187221023)
 - Anak Agung Ayu Bunga Kausalya (187221027)
 - Fina Niswatin Nikmah (187221033)
